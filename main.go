@@ -8,12 +8,15 @@ import (
 
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
 	redirectMap := map[string]string{
-		"/insta":  "https://www.instagram.com/straightfllush/",
-		"/lkdin":  "https://www.linkedin.com/in/malikbagwala/",
-		"/site":   "https://maalik.dev",
-		"/github": "https://github.com/MalikBagwala",
-		"/gitlab": "http://gitlab.com/MalikBagwala",
-		"/resume": "https://drive.google.com/file/d/1vBwDKM0bFcRXGe4jkbnhIDRQU_cJZD9j/view",
+		"/insta":   "https://www.instagram.com/straightfllush/",
+		"/lkdin":   "https://www.linkedin.com/in/malikbagwala/",
+		"/site":    "https://maalik.dev",
+		"/github":  "https://github.com/MalikBagwala",
+		"/gitlab":  "http://gitlab.com/MalikBagwala",
+		"/resume":  "https://drive.google.com/file/d/1vBwDKM0bFcRXGe4jkbnhIDRQU_cJZD9j/view",
+		"/stack":   "https://stackoverflow.com/users/10177043/malik-bagwala",
+		"/tweet":   "https://twitter.com/MalikBagwala",
+		"/threads": "https://www.threads.net/@straightfllush",
 	}
 
 	// Get the requested path from the URL
