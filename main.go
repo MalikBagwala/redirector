@@ -7,6 +7,7 @@ import (
 )
 
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Cache-Control", "public, max-age=600")
 	redirectMap := map[string]string{
 		"/insta":   "https://www.instagram.com/straightfllush/",
 		"/lkdin":   "https://www.linkedin.com/in/malikbagwala/",
