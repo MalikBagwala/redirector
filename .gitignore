@@ -1,0 +1,55 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj/
+_test/
+build/
+vendor/
+
+# Generated files
+bin/
+*.exe
+*.test
+*.prof
+
+# Dependency directories (remove the ones you're not using)
+# Godep, Glide, vgo
+/vendor/
+/Godeps/
+/_workspace/
+
+# Output of the go coverage tool, custom tool, etc.
+*.out
+
+# IDE-specific files
+.idea/
+
+# OSX/Darwin
+.DS_Store
+
+# Compiled Go files
+*.test
+
+# Local binary files
+*.log
+
+# Binary file for testing
+test.out
+
+# Windows binary files
+*.exe
+
+# Project-specific .env file
+.env
+
+# Config file for Viper
+config.toml
+
+# Exclude your built and executable application if your project is structured this way.
+/app
+
+# Ignore SQLite database file
+*.db

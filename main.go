@@ -3,9 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/schollz/closestmatch"
 	"golang.org/x/exp/maps"
 )
@@ -29,17 +31,23 @@ func redirectHandler(redirectMap map[string]string, cm *closestmatch.ClosestMatc
 	}
 }
 func main() {
+	// Load environment variables from the .env file
+	if err := godotenv.Load(); err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
 	redirectMap := map[string]string{
-		"/instagram":     "https://www.instagram.com/straightfllush/",
-		"/linkedin":      "https://www.linkedin.com/in/malikbagwala/",
-		"/site":          "https://maalik.dev",
-		"/github":        "https://github.com/MalikBagwala",
-		"/gitlab":        "http://gitlab.com/MalikBagwala",
-		"/resume":        "https://drive.google.com/file/d/1vBwDKM0bFcRXGe4jkbnhIDRQU_cJZD9j/view",
-		"/cv":            "https://drive.google.com/file/d/1vBwDKM0bFcRXGe4jkbnhIDRQU_cJZD9j/view",
-		"/stackoverflow": "https://stackoverflow.com/users/10177043/malik-bagwala",
-		"/tweet":         "https://twitter.com/MalikBagwala",
-		"/threads":       "https://www.threads.net/@straightfllush",
+		"/instagram":     os.Getenv("INSTAGRAM"),
+		"/linkedin":      os.Getenv("LINKEDIN"),
+		"/site":          os.Getenv("SITE"),
+		"/portfolio":     os.Getenv("SITE"),
+		"/landingpage":   os.Getenv("SITE"),
+		"/github":        os.Getenv("GITHUB"),
+		"/gitlab":        os.Getenv("GITLAB"),
+		"/resume":        os.Getenv("RESUME"),
+		"/cv":            os.Getenv("RESUME"),
+		"/stackoverflow": os.Getenv("STACKOVERFLOW"),
+		"/tweet":         os.Getenv("TWEET"),
+		"/threads":       os.Getenv("THREADS"),
 	}
 
 	// Convert redirect map to list of its keys
