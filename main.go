@@ -49,11 +49,11 @@ func main() {
 	// Specify the port to listen on
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "3000"
 	}
 	// Start the server
 	fmt.Printf("Server listening on port %s...\n", port)
-	err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
+	err := http.ListenAndServe(fmt.Sprintf("0.0.0.0:%s", port), nil)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
