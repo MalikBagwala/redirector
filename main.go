@@ -46,7 +46,6 @@ func main() {
 	wordsToTest := maps.Keys(redirectMap)
 	cm := closestmatch.New(wordsToTest, []int{1})
 
-	println(cm.Closest("intgrum"))
 	// Create a new HTTP server and set up the redirectHandler for all routes
 	http.HandleFunc("/", redirectHandler(redirectMap, cm))
 
