@@ -33,7 +33,7 @@ func redirectHandler(redirectMap map[string]string, cm *closestmatch.ClosestMatc
 func main() {
 	// Load environment variables from the .env file
 	if err := godotenv.Load(); err != nil {
-		log.Fatalf("Error loading .env file: %v", err)
+		log.Println("Warning: Error loading .env file:", err)
 	}
 	redirectMap := map[string]string{
 		"/instagram":     os.Getenv("INSTAGRAM"),
