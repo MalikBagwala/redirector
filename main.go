@@ -48,6 +48,9 @@ func main() {
 		"/stackoverflow": os.Getenv("STACKOVERFLOW"),
 		"/tweet":         os.Getenv("TWEET"),
 		"/threads":       os.Getenv("THREADS"),
+		"/email":         os.Getenv("MAIL"),
+		"/company":       os.Getenv("COMPANY"),
+		"/photo":         os.Getenv("PHOTO"),
 	}
 
 	// Convert redirect map to list of its keys
