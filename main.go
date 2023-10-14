@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
@@ -46,11 +47,13 @@ func main() {
 	http.HandleFunc("/", redirectHandler)
 
 	// Specify the port to listen on
-	port := 8080
-
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	// Start the server
-	fmt.Printf("Server listening on port %d...\n", port)
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	fmt.Printf("Server listening on port %s...\n", port)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), nil)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
