@@ -3,11 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/schollz/closestmatch"
 	"golang.org/x/exp/maps"
 )
@@ -31,27 +29,7 @@ func redirectHandler(redirectMap map[string]string, cm *closestmatch.ClosestMatc
 	}
 }
 func main() {
-	// Load environment variables from the .env file
-	if err := godotenv.Load(); err != nil {
-		log.Println("Warning: Error loading .env file:", err)
-	}
-	redirectMap := map[string]string{
-		"/instagram":     os.Getenv("INSTAGRAM"),
-		"/linkedin":      os.Getenv("LINKEDIN"),
-		"/site":          os.Getenv("SITE"),
-		"/portfolio":     os.Getenv("SITE"),
-		"/landingpage":   os.Getenv("SITE"),
-		"/github":        os.Getenv("GITHUB"),
-		"/gitlab":        os.Getenv("GITLAB"),
-		"/resume":        os.Getenv("RESUME"),
-		"/cv":            os.Getenv("RESUME"),
-		"/stackoverflow": os.Getenv("STACKOVERFLOW"),
-		"/tweet":         os.Getenv("TWEET"),
-		"/threads":       os.Getenv("THREADS"),
-		"/email":         os.Getenv("MAIL"),
-		"/company":       os.Getenv("COMPANY"),
-		"/photo":         os.Getenv("PHOTO"),
-	}
+	loadEnv()
 
 	// Convert redirect map to list of its keys
 	wordsToTest := maps.Keys(redirectMap)
