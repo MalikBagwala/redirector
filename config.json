@@ -1,0 +1,69 @@
+{
+  "/instagram": {
+    "URL": "https://www.instagram.com/straightfllush/",
+    "Title": "Instagram",
+    "Display": true
+  },
+  "/linkedin": {
+    "URL": "https://www.linkedin.com/in/malikbagwala/",
+    "Title": "LinkedIn",
+    "Display": true
+  },
+  "/site": {
+    "URL": "https://maalik.dev",
+    "Display": false
+  },
+  "/portfolio": {
+    "URL": "https://maalik.dev",
+    "Title": "Portfolio",
+    "Display": true
+  },
+  "/landingpage": {
+    "URL": "https://maalik.dev",
+    "Display": false
+  },
+  "/github": {
+    "URL": "https://github.com/MalikBagwala",
+    "Title": "GitHub",
+    "Display": true
+  },
+  "/gitlab": {
+    "URL": "http://gitlab.com/MalikBagwala",
+    "Title": "GitLab",
+    "Display": true
+  },
+  "/resume": {
+    "URL": "https://drive.google.com/file/d/1vBwDKM0bFcRXGe4jkbnhIDRQU_cJZD9j/view",
+    "Title": "Resume",
+    "Display": true
+  },
+  "/cv": {
+    "URL": "https://drive.google.com/file/d/1vBwDKM0bFcRXGe4jkbnhIDRQU_cJZD9j/view",
+    "Display": false
+  },
+  "/stackoverflow": {
+    "URL": "https://stackoverflow.com/users/10177043/malik-bagwala",
+    "Title": "StackOverflow",
+    "Display": true
+  },
+  "/tweet": {
+    "URL": "https://twitter.com/MalikBagwala",
+    "Title": "Twitter",
+    "Display": true
+  },
+  "/threads": {
+    "URL": "https://www.threads.net/@straightfllush",
+    "Title": "Threads",
+    "Display": true
+  },
+  "/email": {
+    "URL": "mailto:hello@maalik.dev",
+    "Title": "Email",
+    "Display": true
+  },
+  "/company": {
+    "URL": "https://vesatogo.com",
+    "Title": "Company",
+    "Display": true
+  }
+}
