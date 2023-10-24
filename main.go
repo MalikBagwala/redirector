@@ -12,7 +12,15 @@ import (
 	"golang.org/x/exp/maps"
 )
 
-func redirectHandler(redirectMap map[string]string, cm *closestmatch.ClosestMatch, tmpl *template.Template) http.HandlerFunc {
+type RedirectEntry struct {
+	URL     string
+	Tags    []string
+	Title   string
+	Display bool
+	Logo    string
+}
+
+func redirectHandler(redirectMap map[string]RedirectEntry, cm *closestmatch.ClosestMatch, tmpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "public, max-age=600")
 		// Get the requested path from the URL
@@ -23,7 +31,7 @@ func redirectHandler(redirectMap map[string]string, cm *closestmatch.ClosestMatc
 
 			w.Header().Set("Content-Type", "text/html")
 			data := struct {
-				RedirectMap map[string]string
+				RedirectMap map[string]RedirectEntry
 			}{
 				RedirectMap: redirectMap,
 			}
@@ -35,7 +43,7 @@ func redirectHandler(redirectMap map[string]string, cm *closestmatch.ClosestMatc
 		}
 		// Find the closest path and perform redirection
 		closestPath := cm.Closest(requestedPath)
-		http.Redirect(w, r, redirectMap[closestPath], http.StatusFound)
+		http.Redirect(w, r, redirectMap[closestPath].URL, http.StatusFound)
 	}
 }
 
@@ -50,22 +58,22 @@ func main() {
 		log.Fatal(teplErr)
 	}
 
-	redirectMap := map[string]string{
-		"/instagram":     os.Getenv("INSTAGRAM"),
-		"/linkedin":      os.Getenv("LINKEDIN"),
-		"/site":          os.Getenv("SITE"),
-		"/portfolio":     os.Getenv("SITE"),
-		"/landingpage":   os.Getenv("SITE"),
-		"/github":        os.Getenv("GITHUB"),
-		"/gitlab":        os.Getenv("GITLAB"),
-		"/resume":        os.Getenv("RESUME"),
-		"/cv":            os.Getenv("RESUME"),
-		"/stackoverflow": os.Getenv("STACKOVERFLOW"),
-		"/tweet":         os.Getenv("TWEET"),
-		"/threads":       os.Getenv("THREADS"),
-		"/email":         os.Getenv("MAIL"),
-		"/company":       os.Getenv("COMPANY"),
-		"/photo":         os.Getenv("PHOTO"),
+	redirectMap := map[string]RedirectEntry{
+		"/instagram":     {URL: os.Getenv("INSTAGRAM"), Title: "Instagram", Display: true},
+		"/linkedin":      {URL: os.Getenv("LINKEDIN"), Title: "LinkedIn", Display: true},
+		"/site":          {URL: os.Getenv("SITE"), Display: false},
+		"/portfolio":     {URL: os.Getenv("SITE"), Title: "Portfolio", Display: true},
+		"/landingpage":   {URL: os.Getenv("SITE"), Display: false},
+		"/github":        {URL: os.Getenv("GITHUB"), Title: "GitHub", Display: true},
+		"/gitlab":        {URL: os.Getenv("GITLAB"), Title: "GitLab", Display: true},
+		"/resume":        {URL: os.Getenv("RESUME"), Title: "Resume", Display: true},
+		"/cv":            {URL: os.Getenv("RESUME"), Display: false},
+		"/stackoverflow": {URL: os.Getenv("STACKOVERFLOW"), Title: "StackOverflow", Display: true},
+		"/tweet":         {URL: os.Getenv("TWEET"), Title: "Twitter", Display: true},
+		"/threads":       {URL: os.Getenv("THREADS"), Title: "Threads", Display: true},
+		"/email":         {URL: os.Getenv("MAIL"), Title: "Email", Display: true},
+		"/company":       {URL: os.Getenv("COMPANY"), Title: "Company", Display: true},
+		"/photo":         {URL: os.Getenv("PHOTO"), Title: "Avatar", Display: false},
 	}
 
 	// Convert redirect map to list of its keys
